@@ -1,10 +1,18 @@
 //////////////////// UNION TYPES
-function combine(input1, input2, resultConversion) {
-    var result;
+
+// TYPE ALIASES
+type Combinable = number | string;
+type Conversion = 'as-number' | 'as-text';
+
+function combine(
+    input1: Combinable, 
+    input2: Combinable, 
+    resultConversion: Conversion
+    ) {
+    let result;
     if (typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number') {
         result = +input1 + +input2;
-    }
-    else {
+    } else {
         result = input1.toString() + input2.toString();
     }
     // if (resultConversion === 'as-number') {
@@ -14,9 +22,12 @@ function combine(input1, input2, resultConversion) {
     // }
     return result;
 }
-var combinedAges = combine(30, 26, 'as-number');
-var combinedStringAges = combine('30', '26', 'as-number');
+
+const combinedAges = combine(30, 26, 'as-number');
+const combinedStringAges = combine('30', '26', 'as-number')
 console.log(combinedStringAges);
+
 console.log(combinedAges);
-var combinedNames = combine('Max', 'Anna', 'as-text');
+
+const combinedNames = combine('Max', 'Anna', 'as-text');
 console.log(combinedNames);
